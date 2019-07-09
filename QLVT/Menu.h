@@ -8,8 +8,11 @@
 
 using namespace std;
 
-void DEBG(int a){
+void DEBUG(int a){
 	cout <<a <<endl;
+}
+void DEBUG(bool a){
+	cout <<(a?"true":"false") <<endl;
 }
 
 class Menu{
@@ -33,7 +36,6 @@ class Menu{
 		Menu();
 		Menu(string p_menu[], int p_size,void (**func)()){
 			delegateFunc = func;
-			DEBG(p_size);
 			menuLength = p_size + 1;
 			menu = new string[ p_size + 1 ];
 			for(int i = 0; i< p_size; i++){
@@ -45,7 +47,7 @@ class Menu{
 		void run(){
 			bool flag = true;
 			char keyPressed;
-			while(flag){
+			while(flag == true){
 				printMenu();
 				keyPressed = getch();
 				if(keyPressed != ENTER)
@@ -60,8 +62,12 @@ class Menu{
 				}
 				else
 				if(keyPressed == ENTER){
-					if(selected == menuLength -1) flag = false;
-					(*delegateFunc[selected])();
+					if(selected == menuLength -1) {
+						flag = false;
+					}
+					else{
+						(*delegateFunc[selected])();
+					}	
 				}
 			}
 		}

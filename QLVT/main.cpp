@@ -28,9 +28,7 @@ int main(){
 	funcs[0] = hello;
 	funcs[1] = bye;
 	Menu mainMenu(a, 4, funcs);
-	while(true){
-		mainMenu.run();
-	}
+	mainMenu.run();
 	return 0;
 }
 #endif
