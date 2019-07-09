@@ -5,16 +5,28 @@
 #include <string>
 #include "Menu.h"
 #include "mylib.h"
+#include "NhanVien.h"
 
 using namespace std;
 
-void hello()
-{
+
+void xoaVT(){
 	_clear();
-	cout<<"Hi...\n";
+	for(int i = 1; i <=10; i++){
+		cout<<"Da xoa VT " <<i <<"\n";
+	}
 	system("pause");
 }
-void bye()
+
+void vatTu()
+{
+	string label[3] = {"Them VT", "Xoa VT", "Sua VT"};
+	void(*funcs[3])();
+	funcs[1] = xoaVT;
+	Menu mainMenu(label, 3, funcs); // 3 la size cua Menu.
+	mainMenu.run();
+}
+void nhanVien()
 {
 	_clear();
 	cout<<"Bye...\n";
@@ -23,11 +35,11 @@ void bye()
 int main(){
 	cursorVisable(false);
 	bool flag = true;
-	string a[4] = {"Vat tu", "Nhan vien", "Hoa don", "CT hoa don"};
-	void(*funcs[2])();
-	funcs[0] = hello;
-	funcs[1] = bye;
-	Menu mainMenu(a, 4, funcs);
+	string label[4] = {"Vat tu", "Nhan vien", "Hoa don", "CT hoa don"};
+	void(*funcs[4])();
+	funcs[0] = vatTu;
+	funcs[1] = nhanVien;
+	Menu mainMenu(label, 4, funcs); // 4 la size cua Menu.
 	mainMenu.run();
 	return 0;
 }

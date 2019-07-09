@@ -15,6 +15,10 @@ void DEBUG(bool a){
 	cout <<(a?"true":"false") <<endl;
 }
 
+typedef void(*FunctionPointer)();
+
+void notthing(){ return;}
+		
 class Menu{
 	const int ENTER = 13;
 	const int KEY_UP = 72;
@@ -22,7 +26,7 @@ class Menu{
 	string* menu;
 	int menuLength;
 	int selected;
-	void (**delegateFunc)();
+	FunctionPointer *delegateFunc;
 	private:
 		void printMenu(){
 			_clear();
@@ -34,12 +38,13 @@ class Menu{
 		}
 	public:
 		Menu();
-		Menu(string p_menu[], int p_size,void (**func)()){
+		Menu(string p_menu[], int p_size, FunctionPointer *func){
 			delegateFunc = func;
 			menuLength = p_size + 1;
 			menu = new string[ p_size + 1 ];
 			for(int i = 0; i< p_size; i++){
 				menu[i] = p_menu[i];
+				if(delegateFunc[i] == NULL) delegateFunc[i] = notthing;
 			}
 			menu[p_size] = "Thoat";
 			selected = 0;
