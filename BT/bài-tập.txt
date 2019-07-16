@@ -1,0 +1,10 @@
+﻿1. cho 1 dãy A số nguyên 
+a) viết chương trình con tách dãy thành 2 phần,phần đầu dãy số lẽ,cuối dãy số chẵn
+b) sắp xếp phần lẻ tăng,chẵn tăng không dùng mãng tạm làm trung gian tất cả chạy trên một mãng
+2. trong 1 dãy A có n số  tự nhiên giá trị >=2 
+viết chương trình con đưa các số nguyên tố về đầu dãy,
+số thuận nghịch về giữa dãy (ko dùng mãng tạm làm trung gian)
+3. viết ctrinh con xóa tất cả các giá trị info = x trong cây nhị phân tìm kiếm 
+Tìm mức của nút có khóa là X trong cây nhị phân neeys X ko tồn tại trả về O
+4. Cho 1 ds liên kết đơn first chứa số nguyên tăng dần.
+Tìm x trng d/sach nếu tìm thấy trả về địa chỉ,ko có thì trả về NULL.
