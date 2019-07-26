@@ -5,42 +5,35 @@
 #include <string>
 #include "Menu.h"
 #include "mylib.h"
-#include "NhanVien.h"
+#include "Util.h"
+#include "VattuGUI.h"
+#include "NhanvienGUI.h"
 
 using namespace std;
 
-
-void xoaVT(){
-	_clear();
-	for(int i = 1; i <=10; i++){
-		cout<<"Da xoa VT " <<i <<"\n";
-	}
-	system("pause");
-}
-
-void vatTu()
-{
-	string label[3] = {"Them VT", "Xoa VT", "Sua VT"};
-	void(*funcs[3])();
-	funcs[1] = xoaVT;
-	Menu mainMenu(label, 3, funcs); // 3 la size cua Menu.
-	mainMenu.run();
-}
-void nhanVien()
-{
-	_clear();
-	cout<<"Bye...\n";
-	system("pause");
-}
 int main(){
+	//
+	// Vattu Init
+	//
+	initdataVattu();
+	initDataNhanVien();
+	getch();
+	
+	/**/
 	cursorVisable(false);
 	bool flag = true;
-	string label[4] = {"Vat tu", "Nhan vien", "Hoa don", "CT hoa don"};
+	string label[4] = {"Quan ly Vat tu", "Quan ly Nhan vien", "Quan ly Hoa don", "Quan ly CT hoa don"};
 	void(*funcs[4])();
 	funcs[0] = vatTu;
 	funcs[1] = nhanVien;
-	Menu mainMenu(label, 4, funcs); // 4 la size cua Menu.
+	int menu_size = 4;
+	Menu mainMenu(label, menu_size, funcs);
+	mainMenu.title="QUAN LY VAT TU";
 	mainMenu.run();
+
+	/**/
+	
+	save_Vattu();
 	return 0;
 }
 #endif
